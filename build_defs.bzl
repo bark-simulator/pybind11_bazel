@@ -38,11 +38,10 @@ def pybind_extension(
 
     native.cc_binary(
         name = name + ".so",
-        copts = copts + PYBIND_COPTS + ["-fvisibility=hidden"],
+        copts = copts + PYBIND_COPTS,
         features = features + PYBIND_FEATURES,
         linkopts = linkopts + select({
-            # "@pybind11//:osx": [],
-            "//conditions:default": ["-Wl,-Bsymbolic"],
+            "//conditions:default": ["-Wl"],
         }),
         linkshared = 1,
         tags = tags + ["local"],

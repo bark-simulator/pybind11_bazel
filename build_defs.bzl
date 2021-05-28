@@ -40,7 +40,7 @@ def pybind_extension(
         name = name + ".so",
         copts = copts + PYBIND_COPTS,
         features = features + PYBIND_FEATURES,
-        linkopts = linkopts,
+        linkopts = linkopts + ["-Wl,-Bsymbolic"],
         linkshared = 1,
         tags = tags + ["local"],
         deps = deps + PYBIND_DEPS,
